@@ -1,0 +1,25 @@
+muslin build scripts
+
+
+These scripts aim to provide a /usr/src style build environment for setting up
+a musl-based, FHS/LSB filesystem conformant Linux distribution.
+It is anticipated, but not required, that these scripts will be installed in
+/usr/src themselves.
+
+The primary intent is to provide a build environment for muslin.
+muslin will use Linux for the kernel, musl for libc, and the FHS for 
+filesystem layout.  It aims to be lightweight, much like the namesake fabric.
+Documentation will be primarily in the form of manpages.
+
+muslin is designed with the intent of conforming to SUS4, while being 
+compatible with older hardware.
+
+LICENSE:
+I, Isaac Dunham, hereby release muslin into the public domain.
+Important:
+All warranties, stated or implied, are explicitly disclaimed.
+This includes the implied warranties of saleability and fitness for any 
+purpose.  In other words, USE THIS AT YOUR OWN RISK, just like I do.
+In lieu of any warranty, the source code is available for your inspection.
+
+
