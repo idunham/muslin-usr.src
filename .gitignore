@@ -1,0 +1,14 @@
+#Libraries
+*.a
+*.so
+*.so.*
+
+# Objects, source trees
+*.o
+*.lo
+*/*/*
+*.tar
+*.tar.*
+#This is autocreated; no need to store it
+pkg/*
+
