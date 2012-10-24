@@ -1,0 +1,52 @@
+diff -ru libnl-tiny-49d9e43e//src/include/linux/if.h libnl-tiny//src/include/linux/if.h
+--- libnl-tiny-49d9e43e//src/include/linux/if.h	2012-08-27 18:45:17.000000000 -0700
++++ libnl-tiny//src/include/linux/if.h	2012-10-17 22:44:34.092225432 -0700
+@@ -116,16 +116,6 @@
+  *	being very small might be worth keeping for clean configuration.
+  */
+ 
+-struct ifmap 
+-{
+-	unsigned long mem_start;
+-	unsigned long mem_end;
+-	unsigned short base_addr; 
+-	unsigned char irq;
+-	unsigned char dma;
+-	unsigned char port;
+-	/* 3 bytes spare */
+-};
+-
++#include <net/if.h>
+ 
+ #endif /* _LINUX_IF_H */
+diff -ru libnl-tiny-49d9e43e//src/Makefile libnl-tiny//src/Makefile
+--- libnl-tiny-49d9e43e//src/Makefile	2012-08-27 18:45:17.000000000 -0700
++++ libnl-tiny//src/Makefile	2012-10-17 23:09:31.314402805 -0700
+@@ -3,15 +3,25 @@
+ CFLAGS=-O2
+ INCLUDES=-Iinclude
+ 
+-LIBNAME=libnl-tiny.so
++LIBNAME=libnl-tiny.a
++SONAME=libnl-tiny.so
+ 
+-all: $(LIBNAME)
++all: $(LIBNAME) $(SONAME)
+ 
+ %.o: %.c
+ 	$(CC) $(WFLAGS) -c -o $@ $(INCLUDES) $(CFLAGS) $<
+ 
++%.lo: %.c
++	$(CC) $(WFLAGS) -c -o $@ $(INCLUDES) -fPIC $(CFLAGS) $<
++
+ LIBNL_OBJ=nl.o handlers.o msg.o attr.o cache.o cache_mngt.o object.o socket.o error.o
+ GENL_OBJ=genl.o genl_family.o genl_ctrl.o genl_mngt.o unl.o
+ 
++LIBNL_PIC=nl.lo handlers.lo msg.lo attr.lo cache.o cache_mngt.lo object.lo socket.lo error.lo
++GENL_PIC=genl.lo genl_family.lo genl_ctrl.lo genl_mngt.lo unl.lo
++
+ $(LIBNAME): $(LIBNL_OBJ) $(GENL_OBJ)
++	ar rc $@ $^
++
++$(SONAME): $(LIBNL_PIC) $(GENL_PIC)
+ 	$(CC) -shared -o $@ $^
