@@ -16,10 +16,28 @@ compatible with older hardware.
 
 LICENSE:
 I, Isaac Dunham, hereby release muslin into the public domain.
+I consider this to allow use with or without credit.
 Important:
 All warranties, stated or implied, are explicitly disclaimed.
 This includes the implied warranties of saleability and fitness for any 
 purpose.  In other words, USE THIS AT YOUR OWN RISK, just like I do.
 In lieu of any warranty, the source code is available for your inspection.
 
+
+Some build rules are based on recipes from sabotage.
+For these, the following license applies:
+
+To the extent possible under law, Christian Neukirchen has waived
+all copyright and related or neighboring rights to this work.
+
+http://creativecommons.org/publicdomain/zero/1.0/
+
+the same License holds for build-scripts, patches and documentation,
+originating from rofl0r, with the following addition:
+
+The origin of the work must not be misrepesented.
+Thus, when using patches or recipes made by rofl0r, the following
+line shall be added as a comment:
+
+# taken from https://github.com/rofl0r/sabotage
 
